@@ -1,0 +1,16 @@
+Here's a Python program that reads a random line from a file:
+
+```python
+import random
+
+with open("file.txt") as f:
+    lines = f.readlines()
+    random_line = random.choice(lines)
+    print(random_line.strip())
+```
+
+In this program, we first open the file "file.txt" using a `with` statement, which automatically closes the file when we're done with it. We then read all the lines from the file into a list using the `readlines()` method.
+
+Next, we use the `random.choice()` function to select a random line from the list of lines, and we use the `strip()` method to remove any leading or trailing whitespace from the line.
+
+Finally, we print the randomly selected line to the console.
