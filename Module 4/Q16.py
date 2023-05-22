@@ -1,0 +1,2 @@
+# When Is the finally Block executed ?
+# The finally block is executed after the try block and/or catch block(s) have finished executing, regardless of whether an exception was thrown or not. It is always executed, even if an exception is thrown and not caught.

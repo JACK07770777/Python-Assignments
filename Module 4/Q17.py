@@ -1,0 +1,2 @@
+# what happens whe 1"==1 is executed ?
+# When the statement "1" == 1 is executed, it will return a Boolean value of true. This is because the double equals sign (==) is a comparison operator that checks if the values on both sides are equal, regardless of their data type. In this case, both sides have the same value of 1, so the expression is true.

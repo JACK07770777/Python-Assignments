@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+{% block content %}
+  <h1>Product list</h1>
+  <a href="{% url 'product_mst_create' %}">Add new product</a>
+
+  <ul>
+  {% for product in products_mst %}
+    <li><a href="{% url 'product_mst_detail' pk=product.pk %}">{{ product.name }}</a>
+      <ul>
+        {% for subcategory in product.productsubcategorydetail_set.all %}
+          <li>{{ subcategory.price }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% empty %}
+    <li>No products found.</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+```
+
+<!-- In `admin/templates/admin/product_sub_category_detail_create.html`: -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add a new product sub category detail</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% url 'product_mst_detail' pk=product.pk %}">Cancel</a>
+  {% endblock %}
+  
+  
+  
+  {% extends 'base.html' %}
+  
+  {% block content %}
+    <h1>Search for a product</h1>
+  
+    <form method="get">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Search</button>
+    </form>
+  
+    <ul>
+    {% for product in products %}
+      <li><a href="{% url 'product_mst_detail' pk=product.pk %}">{{ product.name }}</a></li>
+    {% empty %}
+      <li>No products found.</li>
+    {% endfor %}
+    </ul>
+  {% endblock %}
+</body>
+</html>
